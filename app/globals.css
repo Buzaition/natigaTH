@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #17223b;
+  --blue: #2266e8;
+  --green: #25bca3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% 10%, #d9eaff 0, transparent 35%),
+    radial-gradient(circle at 85% 90%, #d7fff2 0, transparent 28%),
+    #f7f9fd;
+  color: var(--ink);
+  font-family: Arial, Tahoma, sans-serif;
+}
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 28px 16px;
+}
+
+.result-card {
+  width: min(100%, 530px);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #e1e9f7;
+  border-radius: 8px;
+  padding: 38px;
+  box-shadow: 0 18px 50px rgba(37, 70, 130, 0.14);
+  text-align: center;
+}
+
+.top-mark {
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+h1 {
+  margin: 12px 0 5px;
+  font-size: 42px;
+}
+
+.intro {
+  margin: 0 0 31px;
+  color: #6c7790;
+}
+
+.search-form {
+  text-align: right;
+  direction: rtl;
+}
+
+label {
+  display: block;
+  margin-bottom: 9px;
+  font-weight: 700;
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+  direction: rtl;
+}
+
+input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d5deed;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 16px;
+  outline: none;
+  direction: ltr;
+  text-align: right;
+}
+
+input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px #dce9ff;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  background: var(--blue);
+  color: white;
+  padding: 0 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1754c5;
+}
+
+.hint {
+  color: #8290a9;
+  font-size: 12px;
+  margin: 9px 2px 0;
+}
+
+.result-panel {
+  margin-top: 29px;
+  padding: 24px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #edf4ff, #f4fffc);
+  direction: rtl;
+}
+
+.result-label {
+  margin: 0;
+  color: #63708b;
+}
+
+.student-name {
+  margin: 8px 0 0;
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.score-line {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.score-line strong {
+  font-size: 47px;
+  line-height: 1;
+}
+
+.score-line span {
+  color: #52617b;
+}
+
+.percentage {
+  color: var(--blue);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.progress-track {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #d6e3f7;
+  margin-top: 17px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--green));
+  transition: width 0.35s ease;
+}
+
+.not-found {
+  margin-top: 25px;
+  border-radius: 8px;
+  padding: 15px;
+  background: #fff4f0;
+  color: #aa3b21;
+  direction: rtl;
+}
+
+.student-status {
+  margin: 13px 0 0;
+  color: #1e6e5d;
+  font-weight: 700;
+}
+
+footer {
+  font-size: 16px;
+  color: #41506c;
+  font-weight: 800;
+}
+
+@media (max-width: 450px) {
+  .result-card {
+    padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .search-row {
+    flex-direction: column;
+  }
+
+  button {
+    padding: 14px;
+  }
+}

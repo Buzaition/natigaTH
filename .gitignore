@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Build output and generated runtime state
+dist/
+.next/
+.vinext/
+out/
+coverage/
+.wrangler/
+outputs/
+work/
+
+# Logs and diagnostics
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Source data kept local only
+*.xlsx
+*.xls
+*.xlsm
