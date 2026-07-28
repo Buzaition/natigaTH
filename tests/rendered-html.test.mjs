@@ -4,38 +4,18 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-async function render() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
+test("keeps the Arabic results lookup page content", async () => {
+  const [page, layout] = await Promise.all([
+    readFile(new URL("app/page.tsx", root), "utf8"),
+    readFile(new URL("app/layout.tsx", root), "utf8"),
+  ]);
 
-  return worker.fetch(
-    new Request("http://localhost/", {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
-}
-
-test("renders the Arabic results lookup page", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
-  const html = await response.text();
-  assert.match(html, /<html[^>]+lang="ar"[^>]+dir="rtl"/);
-  assert.match(html, /نتيجة الثانوية العامة/);
-  assert.match(html, /رقم الجلوس/);
-  assert.match(html, /Developed by Eng\. Abuzaid Saad/);
-  assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/);
+  assert.match(layout, /lang="ar"/);
+  assert.match(layout, /dir="rtl"/);
+  assert.match(layout, /نتيجة الثانوية العامة/);
+  assert.match(page, /رقم الجلوس/);
+  assert.match(page, /Developed by Eng\. Abuzaid Saad/);
+  assert.match(page, /student-name/);
 });
 
 test("keeps lookup behavior numeric and data-backed", async () => {

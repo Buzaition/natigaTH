@@ -26,4 +26,4 @@ npm test
 
 - `app/` contains the page, metadata, and styles.
 - `public/data/` contains generated static result shards used by the browser lookup.
-- `worker/` and `build/` contain the Vinext/Sites deployment plumbing.
+- `next.config.ts` keeps the project deployable as a standard Next.js app on Vercel.
